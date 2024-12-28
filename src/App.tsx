@@ -6,6 +6,7 @@ import FeatureCarousel from './components/FeatureCarousel';
 import FeatureSections from './components/FeatureSections';
 import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
+import TermsOfUse from './components/TermsOfUse';
 import placeholder from './images/placeholder.png';
 
 // Navigation Component
@@ -79,33 +80,7 @@ const HomePage = () => (
 
 // Features Page
 const TermsPage = () => (
-  <div className="container mx-auto px-4 py-16">
-    <h1 className="text-3xl font-bold mb-8">Features</h1>
-    <div className="grid md:grid-cols-2 gap-8">
-      <Card className="bg-gray-800 border-gray-700">
-        <CardContent className="p-6">
-          <FileAudio className="w-8 h-8 text-blue-500 mb-4" />
-          <h3 className="text-xl font-semibold mb-2">
-            Flexible audio options
-          </h3>
-          <p className="text-gray-400">
-            Record voice notes and transcribe them instantly
-          </p>
-        </CardContent>
-      </Card>
-      <Card className="bg-gray-800 border-gray-700">
-        <CardContent className="p-6">
-          <Lock className="w-8 h-8 text-blue-500 mb-4" />
-          <h3 className="text-xl font-semibold mb-2">
-            Privacy and security
-          </h3>
-          <p className="text-gray-400">
-            Your data is encrypted and protected
-          </p>
-        </CardContent>
-      </Card>
-    </div>
-  </div>
+  <TermsOfUse />
 );
 
 // Documentation Page
