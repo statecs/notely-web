@@ -6,6 +6,7 @@ import FeatureCarousel from './components/FeatureCarousel';
 import FeatureSections from './components/FeatureSections';
 import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
+import placeholder from './images/placeholder.png';
 
 // Navigation Component
 const Navigation = () => {
@@ -18,7 +19,6 @@ const Navigation = () => {
         <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
         <span className="font-semibold">Notely AI</span>
       </Link>
-      <button className="md:hidden p-2">☰</button>
     </header>
   );
 };
@@ -26,35 +26,43 @@ const Navigation = () => {
 // Home Page
 const HomePage = () => (
   <div className="container mx-auto px-4">
-    <section className="py-16 text-center">
-      <h1 className="text-4xl font-bold mb-4">
-        Get perfect notes and<br />transcriptions with AI.
-      </h1>
-      <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium mt-4">
-        Download Now Free
-      </button>
-      
-      <div className="mt-12 relative">
-        <div className="bg-gray-800 rounded-3xl p-4 max-w-sm mx-auto">
-          <img 
-            src="/api/placeholder/280/500"
-            alt="App screenshot"
-            className="rounded-2xl"
-          />
-        </div>
+  <section className="py-16 text-center">
+    <h1 className="text-4xl font-bold mb-4 animate-slide-up opacity-0" style={{ animationDelay: '0.2s' }}>
+      Get perfect notes and<br />transcriptions with AI.
+    </h1>
+    <button 
+      className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium mt-4 animate-slide-up opacity-0" 
+      style={{ animationDelay: '0.4s' }}
+    >
+      Download Now Free
+    </button>
+    
+    <div className="mt-12 relative h-[50px] md:h-[600px]"> {/* Reduced height on mobile */}
+      <div 
+        className="rounded-3xl p-4 mx-auto animate-slide-up opacity-0" 
+        style={{ animationDelay: '0.6s' }}
+      >
+        <img 
+          src={placeholder} 
+          alt="App screenshot"
+          className="rounded-2xl h-full w-full object-contain md:object-cover" /* Changed object-fit behavior */
+        />
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section className="py-16">
-      <div className="flex justify-center space-x-8 mb-8 items-center">
-        <h1 className="text-4xl font-bold">Designed to be reliable,<br/>simple, private, and powerful.</h1>
-        <div className="flex gap-12">
-          <div>
-            <div className="text-blue-400 text-5xl font-bold">50m+</div>
+  <section className="py-32 mt-16"> {/* Changed py-16 to py-32 and added mt-16 */}
+      <div className="flex flex-col md:flex-row justify-center md:space-x-8 space-y-8 md:space-y-0 mb-8 items-center">
+        <h1 className="text-3xl md:text-4xl font-bold text-center md:text-left animate-slide-up opacity-0" style={{ animationDelay: '0.8s' }}>
+          Designed to be reliable,<br/>simple, private, and powerful.
+        </h1>
+        <div className="flex gap-8 md:gap-12 animate-slide-up opacity-0" style={{ animationDelay: '1s' }}>
+          <div className="text-center">
+            <div className="text-blue-400 text-4xl md:text-5xl font-bold">50m+</div>
             <div className="text-gray-400 mt-2">Minutes of audio</div>
           </div>
-          <div>
-            <div className="text-blue-400 text-5xl font-bold">4.9</div>
+          <div className="text-center">
+            <div className="text-blue-400 text-4xl md:text-5xl font-bold">4.9</div>
             <div className="text-gray-400 mt-2">Rating out of 5</div>
           </div>
         </div>
