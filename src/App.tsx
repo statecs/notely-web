@@ -4,6 +4,7 @@ import { Star, Phone, Lock, FileAudio, Home, Info, Book, Mail } from 'lucide-rea
 import { Card, CardHeader, CardTitle, CardContent } from './components/ui/card';
 import FeatureCarousel from './components/FeatureCarousel';
 import FAQSection from './components/FAQSection';
+import Footer from './components/Footer';
 
 // Navigation Component
 const Navigation = () => {
@@ -16,26 +17,6 @@ const Navigation = () => {
         <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
         <span className="font-semibold">Notely AI</span>
       </Link>
-      <nav className="hidden md:flex space-x-6">
-        <Link to="/" className={`${isActive('/') ? 'text-blue-500' : 'text-gray-300'} hover:text-blue-400`}>
-          <div className="flex items-center space-x-1">
-            <Home className="w-4 h-4" />
-            <span>Home</span>
-          </div>
-        </Link>
-        <Link to="/features" className={`${isActive('/features') ? 'text-blue-500' : 'text-gray-300'} hover:text-blue-400`}>
-          <div className="flex items-center space-x-1">
-            <Info className="w-4 h-4" />
-            <span>Features</span>
-          </div>
-        </Link>
-        <Link to="/docs" className={`${isActive('/docs') ? 'text-blue-500' : 'text-gray-300'} hover:text-blue-400`}>
-          <div className="flex items-center space-x-1">
-            <Book className="w-4 h-4" />
-            <span>Docs</span>
-          </div>
-        </Link>
-      </nav>
       <button className="md:hidden p-2">☰</button>
     </header>
   );
@@ -82,11 +63,12 @@ const HomePage = () => (
 
     <FeatureCarousel />
     <FAQSection />
+    <Footer />
   </div>
 );
 
 // Features Page
-const FeaturesPage = () => (
+const TermsPage = () => (
   <div className="container mx-auto px-4 py-16">
     <h1 className="text-3xl font-bold mb-8">Features</h1>
     <div className="grid md:grid-cols-2 gap-8">
@@ -117,7 +99,7 @@ const FeaturesPage = () => (
 );
 
 // Documentation Page
-const DocsPage = () => (
+const PrivacyPage = () => (
   <div className="container mx-auto px-4 py-16">
     <h1 className="text-3xl font-bold mb-8">Documentation</h1>
     <div className="prose prose-invert max-w-none">
@@ -143,8 +125,8 @@ const App = () => {
         <Navigation />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/features" element={<FeaturesPage />} />
-          <Route path="/docs" element={<DocsPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
         </Routes>
       </div>
     </BrowserRouter>
