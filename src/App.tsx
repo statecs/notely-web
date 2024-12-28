@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Star, Phone, Lock, FileAudio, Home, Info, Book, Mail } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from './components/ui/card';
+import FeatureCarousel from './components/FeatureCarousel';
 
 // Navigation Component
 const Navigation = () => {
@@ -33,12 +34,6 @@ const Navigation = () => {
             <span>Docs</span>
           </div>
         </Link>
-        <Link to="/contact" className={`${isActive('/contact') ? 'text-blue-500' : 'text-gray-300'} hover:text-blue-400`}>
-          <div className="flex items-center space-x-1">
-            <Mail className="w-4 h-4" />
-            <span>Contact</span>
-          </div>
-        </Link>
       </nav>
       <button className="md:hidden p-2">☰</button>
     </header>
@@ -68,17 +63,23 @@ const HomePage = () => (
     </section>
 
     <section className="py-16">
-      <div className="flex justify-center space-x-8 mb-8">
-        <div className="text-center">
-          <div className="text-2xl font-bold">50m+</div>
-          <div className="text-gray-400">Active users</div>
-        </div>
-        <div className="text-center">
-          <div className="text-2xl font-bold">4.9</div>
-          <div className="text-gray-400">Rating</div>
+      <div className="flex justify-center space-x-8 mb-8 items-center">
+        <h1 className="text-4xl font-bold">Designed to be reliable,<br/>simple, private, and powerful.</h1>
+        <div className="flex gap-12">
+          <div>
+            <div className="text-blue-400 text-5xl font-bold">50m+</div>
+            <div className="text-gray-400 mt-2">Minutes of audio</div>
+          </div>
+          <div>
+            <div className="text-blue-400 text-5xl font-bold">4.9</div>
+            <div className="text-gray-400 mt-2">Rating out of 5</div>
+          </div>
         </div>
       </div>
     </section>
+
+
+    <FeatureCarousel />
   </div>
 );
 
@@ -130,45 +131,7 @@ const DocsPage = () => (
   </div>
 );
 
-// Contact Page
-const ContactPage = () => (
-  <div className="container mx-auto px-4 py-16">
-    <h1 className="text-3xl font-bold mb-8">Contact Us</h1>
-    <Card className="bg-gray-800 border-gray-700">
-      <CardContent className="p-6">
-        <form className="space-y-6">
-          <div>
-            <label className="block text-sm font-medium mb-2">Name</label>
-            <input 
-              type="text" 
-              className="w-full p-2 bg-gray-700 rounded-lg border border-gray-600 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium mb-2">Email</label>
-            <input 
-              type="email" 
-              className="w-full p-2 bg-gray-700 rounded-lg border border-gray-600 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium mb-2">Message</label>
-            <textarea 
-              className="w-full p-2 bg-gray-700 rounded-lg border border-gray-600 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-              rows={4}
-            ></textarea>
-          </div>
-          <button 
-            type="submit" 
-            className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700"
-          >
-            Send Message
-          </button>
-        </form>
-      </CardContent>
-    </Card>
-  </div>
-);
+
 
 // Main App Component
 const App = () => {
@@ -180,7 +143,6 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/features" element={<FeaturesPage />} />
           <Route path="/docs" element={<DocsPage />} />
-          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </div>
     </BrowserRouter>
