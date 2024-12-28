@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { MessageSquare, Mic, FileText, Share2 } from 'lucide-react';
+import image1 from '../images/image-1.png';
+import image2 from '../images/image-2.png';
+import image3 from '../images/image-3.png';
+import image4 from '../images/image-4.png';
 
 const FeatureCarousel = () => {
   const [activeFeature, setActiveFeature] = useState(0);
@@ -9,25 +13,25 @@ const FeatureCarousel = () => {
       icon: FileText,
       title: "Beautifully formatted notes",
       description: "Instantly create headings and bullets of key points from your audio",
-      image: "/api/placeholder/600/400",
+      image: image1
     },
     {
       icon: Mic,
       title: "Transcribe & summary",
       description: "Read your audio's transcription and custom summaries",
-      image: "/api/placeholder/600/400",
+      image: image2
     },
     {
       icon: MessageSquare,
       title: "Chat with your audio",
       description: "Extract key insights, list action items, ask questions, and more.",
-      image: "/api/placeholder/600/400",
+      image: image3
     },
     {
       icon: Share2,
       title: "Export & share with a tap",
       description: "Create and share minutes as formatted PDF's, emails, and texts.",
-      image: "/api/placeholder/600/400",
+      image: image4
     }
   ];
 
