@@ -7,6 +7,7 @@ import FeatureSections from './components/FeatureSections';
 import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
 import TermsOfUse from './components/TermsOfUse';
+import PrivacyPolicy from './components/PrivacyPolicy';
 import placeholder from './images/placeholder.png';
 
 // Navigation Component
@@ -78,26 +79,14 @@ const HomePage = () => (
   </div>
 );
 
-// Features Page
+// Terms Page
 const TermsPage = () => (
   <TermsOfUse />
 );
 
-// Documentation Page
+// Privacy Page
 const PrivacyPage = () => (
-  <div className="container mx-auto px-4 py-16">
-    <h1 className="text-3xl font-bold mb-8">Documentation</h1>
-    <div className="prose prose-invert max-w-none">
-      <h2>Getting Started</h2>
-      <p className="text-gray-300">
-        Learn how to integrate Notely into your workflow with our comprehensive documentation.
-      </p>
-      <h2>API Reference</h2>
-      <p className="text-gray-300">
-        Explore our API endpoints and integration options.
-      </p>
-    </div>
-  </div>
+  <PrivacyPolicy />
 );
 
 
