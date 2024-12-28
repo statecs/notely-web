@@ -12,7 +12,7 @@ const Navigation = () => {
     <header className="flex justify-between items-center p-4 bg-gray-900 border-b border-gray-800">
       <Link to="/" className="flex items-center space-x-2">
         <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-        <span className="font-semibold">Minutes AI</span>
+        <span className="font-semibold">Notely AI</span>
       </Link>
       <nav className="hidden md:flex space-x-6">
         <Link to="/" className={`${isActive('/') ? 'text-blue-500' : 'text-gray-300'} hover:text-blue-400`}>
@@ -120,7 +120,7 @@ const DocsPage = () => (
     <div className="prose prose-invert max-w-none">
       <h2>Getting Started</h2>
       <p className="text-gray-300">
-        Learn how to integrate Minutes AI into your workflow with our comprehensive documentation.
+        Learn how to integrate Notely into your workflow with our comprehensive documentation.
       </p>
       <h2>API Reference</h2>
       <p className="text-gray-300">
