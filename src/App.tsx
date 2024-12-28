@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-do
 import { Star, Phone, Lock, FileAudio, Home, Info, Book, Mail } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from './components/ui/card';
 import FeatureCarousel from './components/FeatureCarousel';
+import FAQSection from './components/FAQSection';
 
 // Navigation Component
 const Navigation = () => {
@@ -80,6 +81,7 @@ const HomePage = () => (
 
 
     <FeatureCarousel />
+    <FAQSection />
   </div>
 );
 
