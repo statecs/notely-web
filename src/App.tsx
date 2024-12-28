@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-do
 import { Star, Phone, Lock, FileAudio, Home, Info, Book, Mail } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from './components/ui/card';
 import FeatureCarousel from './components/FeatureCarousel';
+import FeatureSections from './components/FeatureSections';
 import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
 
@@ -62,6 +63,7 @@ const HomePage = () => (
 
 
     <FeatureCarousel />
+    <FeatureSections />
     <FAQSection />
     <Footer />
   </div>

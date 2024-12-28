@@ -9,24 +9,24 @@ import {
 const FAQSection = () => {
   const faqs = [
     {
-      question: "What audio formats does Minutes AI support?",
+      question: "What audio formats does Notely AI support?",
       answer: "You can use our built-in audio recorder, upload an audio file (mp3, mp4, mpeg, mpga, m4a, wav, webm), or paste in a YouTube link."
     },
     {
-      question: "What devices can I use Minutes AI on?",
-      answer: "Minutes AI is available on all major platforms including iOS, Android, and web browsers. You can access your notes and recordings from any device."
+      question: "What devices can I use Notely AI on?",
+      answer: "Notely AI is available on all major platforms including iOS, Android, and web browsers. You can access your notes and recordings from any device."
     },
     {
-      question: "Can I use Minutes with Voice Memos or past recordings in other apps?",
-      answer: "Yes, you can import recordings from Voice Memos, WhatsApp, Zoom, and most other audio recording apps. Simply export the audio file and upload it to Minutes AI."
+      question: "Can I use Notely with Voice Memos or past recordings in other apps?",
+      answer: "Yes, you can import recordings from Voice Memos, WhatsApp, Zoom, and most other audio recording apps. Simply export the audio file and upload it to Notely AI."
     },
     {
       question: "Are my notes, transcriptions, and recordings private?",
       answer: "Yes, all your content is encrypted and stored securely. We never share your data with third parties and you have full control over your privacy settings."
     },
     {
-      question: "Does Minutes AI support other languages or translations?",
-      answer: "Minutes AI supports transcription in over 30 languages and can translate between most major languages. Check our language settings for the full list of supported languages."
+      question: "Does Notely AI support other languages or translations?",
+      answer: "Notely AI supports transcription in over 30 languages and can translate between most major languages."
     }
   ];
 
