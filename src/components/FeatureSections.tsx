@@ -1,5 +1,6 @@
 import React from 'react';
 import { Ban, Lock, Trash2, Shield } from 'lucide-react';
+import image5 from '../images/image-5.png';
 
 const FeatureSections = () => {
   return (
@@ -9,7 +10,7 @@ const FeatureSections = () => {
         <div className="relative">
           <div className="bg-gray-100 rounded-lg overflow-hidden">
             <img 
-              src="/api/placeholder/400/400" 
+              src={image5}
               alt="Person using audio features"
               className="w-full"
             />
@@ -25,7 +26,7 @@ const FeatureSections = () => {
             <div className="flex items-center gap-2">
               <span className="text-gray-600">📊</span>
               <div>
-                <div className="font-medium">Market Analysis</div>
+                <div className="font-medium text-gray-600">Market Analysis</div>
                 <div className="text-sm text-gray-500">8/25/24 • 50 min, 29 sec</div>
               </div>
             </div>
