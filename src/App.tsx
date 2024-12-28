@@ -26,7 +26,7 @@ const Navigation = () => {
 // Home Page
 const HomePage = () => (
   <div className="container mx-auto px-4">
-  <section className="py-16 text-center">
+  <section className="pt-16 text-center">
     <h1 className="text-4xl font-bold mb-4 animate-slide-up opacity-0" style={{ animationDelay: '0.2s' }}>
       Get perfect notes and<br />transcriptions with AI.
     </h1>
@@ -37,21 +37,21 @@ const HomePage = () => (
       Download Now Free
     </button>
     
-    <div className="mt-12 relative h-[50px] md:h-[600px]"> {/* Reduced height on mobile */}
+    <div className="mt-12 relative w-screen md:w-full -mx-4 md:mx-auto h-[600px] md:h-[800px]"> {/* Full screen width only on mobile */}
       <div 
-        className="rounded-3xl p-4 mx-auto animate-slide-up opacity-0" 
+        className="h-full animate-slide-up opacity-0 md:p-4 md:max-w-[1200px] md:mx-auto" 
         style={{ animationDelay: '0.6s' }}
       >
         <img 
           src={placeholder} 
           alt="App screenshot"
-          className="rounded-2xl h-full w-full object-contain md:object-cover" /* Changed object-fit behavior */
+          className="w-full h-full object-cover rounded-none md:rounded-2xl" 
         />
       </div>
     </div>
   </section>
 
-  <section className="py-32 mt-16"> {/* Changed py-16 to py-32 and added mt-16 */}
+  <section className="pb-16 mt-16"> {/* Changed py-16 to py-32 and added mt-16 */}
       <div className="flex flex-col md:flex-row justify-center md:space-x-8 space-y-8 md:space-y-0 mb-8 items-center">
         <h1 className="text-3xl md:text-4xl font-bold text-center md:text-left animate-slide-up opacity-0" style={{ animationDelay: '0.8s' }}>
           Designed to be reliable,<br/>simple, private, and powerful.
