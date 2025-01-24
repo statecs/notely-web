@@ -29,15 +29,18 @@ const Navigation = () => {
 const HomePage = () => (
   <div className="container mx-auto px-4">
   <section className="pt-16 text-center">
-    <h1 className="text-4xl font-bold mb-4 animate-slide-up opacity-0" style={{ animationDelay: '0.2s' }}>
+    <h1 className="text-4xl font-bold mb-8 animate-slide-up opacity-0" style={{ animationDelay: '0.2s' }}>
       Get perfect notes and<br />transcriptions with AI.
     </h1>
-    <button 
-      className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium mt-4 animate-slide-up opacity-0" 
-      style={{ animationDelay: '0.4s' }}
-    >
-      Download Now Free
-    </button>
+    <a 
+        href="https://apps.apple.com/se/app/notely-ai/id6740462619?l=en-GB&platform=iphone"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium mt-4 animate-slide-up opacity-0"
+        style={{ animationDelay: '0.4s' }}
+      >
+        Download Now Free
+      </a>
     
     <div className="mt-12 relative w-screen md:w-full -mx-4 md:mx-auto h-[600px] md:h-[800px]"> {/* Full screen width only on mobile */}
       <div 

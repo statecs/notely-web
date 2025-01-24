@@ -38,12 +38,17 @@ const FeatureSections = () => {
           <h2 className="text-4xl font-bold text-white mb-4">
             Flexible audio options that fit your workflow
           </h2>
-          <p className="text-gray-400 mb-6">
+          <p className="text-gray-400 mb-12">
             Record live audio with our built-in audio recorder, upload audio files from your device, or import YouTube videos. Supports 50+ languages.
           </p>
-          <button className="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-colors">
+          <a 
+            href="https://apps.apple.com/se/app/notely-ai/id6740462619?l=en-GB&platform=iphone"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-colors"
+          >
             Download Now
-          </button>
+          </a>
         </div>
       </div>
 
@@ -54,12 +59,17 @@ const FeatureSections = () => {
           <h2 className="text-4xl font-bold text-white mb-4">
             Privacy and security is our number one priority.
           </h2>
-          <p className="text-gray-400 mb-6">
+          <p className="text-gray-400 mb-12">
             Notely AI will never sell your data or give access to unrelated third parties. You can permanently delete your data at any time.
           </p>
-          <button className="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-colors">
+          <a 
+            href="https://apps.apple.com/se/app/notely-ai/id6740462619?l=en-GB&platform=iphone"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-colors"
+          >
             Download Now
-          </button>
+          </a>
         </div>
 
         <div className="space-y-4">
