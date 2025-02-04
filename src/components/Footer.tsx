@@ -11,15 +11,24 @@ const Footer = () => {
             <h2 className="text-2xl font-bold text-white mb-4">
               Download Notely AI on the App Store
             </h2>
-            <a 
-              href="https://apps.apple.com/se/app/notely-ai/id6740462619?l=en-GB&platform=iphone"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-black text-white px-6 py-3 rounded-full inline-flex items-center gap-2 hover:bg-gray-800 transition-colors"
-            >
-              Download Free App
-              <ArrowRight className="w-4 h-4" />
-            </a>
+            {(() => {
+              const isAndroid = /Android/.test(navigator.userAgent);
+              const storeUrl = isAndroid 
+                ? "https://play.google.com/store/apps/details?id=com.cstate.notelyapp"
+                : "https://apps.apple.com/se/app/notely-ai/id6740462619?l=en-GB&platform=iphone";
+              
+              return (
+                <a 
+                  href={storeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-black text-white px-6 py-3 rounded-full inline-flex items-center gap-2 hover:bg-gray-800 transition-colors"
+                >
+                  Download Free App
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              );
+            })()}
           </div>
 
           {/* Right side - Links */}
