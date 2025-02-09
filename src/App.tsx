@@ -32,6 +32,20 @@ const HomePage = () => (
     <h1 className="text-4xl font-bold mb-8 animate-slide-up opacity-0" style={{ animationDelay: '0.2s' }}>
       Get perfect notes and<br />transcriptions with AI.
     </h1>
+    
+    {/* Add schema.org structured data */}
+    <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Notely AI",
+            "applicationCategory": "ProductivityApplication",
+            "operatingSystem": "iOS, Android",
+            "description": "Transform your audio into perfect notes with AI-powered transcription and insights.",
+          })}
+        </script>
+
+
     {/* Helper function to determine the store URL */}
     {(() => {
       const isAndroid = /Android/.test(navigator.userAgent);
