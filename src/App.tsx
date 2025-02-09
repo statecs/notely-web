@@ -8,22 +8,13 @@ import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
 import TermsOfUse from './components/TermsOfUse';
 import PrivacyPolicy from './components/PrivacyPolicy';
+import PricingPage from './components/Pricing';
+import FeaturesPage from './components/Features';
+import ContactPage from './components/Contact';
+import Navigation from './components/Navigation';
 import placeholder from './images/placeholder.png';
 
-// Navigation Component
-const Navigation = () => {
-  const location = useLocation();
-  const isActive = (path: string) => location.pathname === path;
 
-  return (
-    <header className="flex justify-between items-center p-4 bg-gray-900 border-b border-gray-800">
-      <Link to="/" className="flex items-center space-x-2">
-        <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-        <span className="font-semibold">Notely AI</span>
-      </Link>
-    </header>
-  );
-};
 
 // Home Page
 const HomePage = () => (
@@ -126,6 +117,10 @@ const App = () => {
         <Navigation />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/features" element={<FeaturesPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
         </Routes>

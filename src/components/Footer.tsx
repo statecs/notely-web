@@ -8,8 +8,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {/* Left side */}
           <div>
-            <h2 className="text-2xl font-bold text-white mb-4">
-              Download Notely AI on the App Store
+          <h2 className="text-2xl font-bold text-white mb-4">
+              Download Notely AI on the {/Android/.test(navigator.userAgent) ? 'Google Play Store' : 'App Store'}
             </h2>
             {(() => {
               const isAndroid = /Android/.test(navigator.userAgent);
@@ -44,7 +44,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="text-gray-500 text-sm">
-          © Copyright 2024 Christopher State
+          © Copyright 2024 Notely
         </div>
       </div>
     </footer>
