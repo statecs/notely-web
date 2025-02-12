@@ -76,26 +76,34 @@ const PrivacyPolicy = () => {
       icon: <Lock className="w-6 h-6" />,
       content: [
         {
-          subtitle: 'Core Services',
+          subtitle: 'Core AI Services',
           text: 'We process your information to:',
           bullets: [
-            'Provide and improve our note-taking services',
-            'Power AI features and smart suggestions',
-            'Enable collaboration and sharing features',
-            'Process payments and subscriptions',
-            'Authenticate users and maintain security',
-            'Send important service notifications'
+            'Generate AI responses and completions',
+            'Detect and prevent misuse or abuse',
+            'Process payments for subscriptions',
+            'Monitor and analyze service performance'
           ]
         },
         {
           subtitle: 'Legal Bases for Processing',
-          text: 'We process your data under these legal bases:',
+          text: 'We process data under these legal bases:',
           bullets: [
-            'Performance of our contract with you',
-            'Your consent where required',
-            'Our legitimate business interests',
-            'Legal obligations we must comply with',
+            'Performance of our service agreement',
+            'Your explicit consent when required',
+            'Legitimate interests (service improvement, security)',
+            'Legal and regulatory obligations',
             'Protection of vital interests'
+          ]
+        },
+        {
+          subtitle: 'Processing Safeguards',
+          text: 'When processing your data, we ensure:',
+          bullets: [
+            'Respect for user privacy preferences',
+            'Data minimization principles',
+            'Purpose limitation compliance',
+            'Regular processing audits'
           ]
         }
       ]
@@ -106,26 +114,37 @@ const PrivacyPolicy = () => {
       icon: <Users className="w-6 h-6" />,
       content: [
         {
-          subtitle: 'Third-Party Service Providers',
-          text: 'We share data with these trusted providers:',
+          subtitle: 'Service Providers',
+          text: 'We may share data with service providers for:',
           bullets: [
-            'Cloud storage providers (AWS, Google Cloud)',
-            'Analytics services (Google Analytics, PostHog)',
-            'Payment processors (Stripe)',
-            'Authentication providers (Auth0)',
-            'Customer support tools (Zendesk)',
-            'Email service providers (SendGrid)'
+            'Hosting and cloud infrastructure services',
+            'Analytics and performance monitoring',
+            'Payment processing and subscription management',
+            'Customer support and communication tools',
+            'Security and fraud prevention',
+            'Business operations and maintenance'
           ]
         },
         {
-          subtitle: 'Data Protection Requirements',
-          text: 'All third-party providers must:',
+          subtitle: 'Legal and Business Requirements',
+          text: 'We may also share data:',
           bullets: [
-            'Sign data processing agreements',
-            'Maintain strict security standards',
-            'Process data only for specified purposes',
-            'Comply with privacy laws and regulations',
-            'Support data subject rights'
+            'To comply with legal obligations and law enforcement requests',
+            'During business transactions (mergers, acquisitions)',
+            'To protect rights, privacy, and safety',
+            'With affiliates and corporate partners',
+            'With enterprise account administrators'
+          ]
+        },
+        {
+          subtitle: 'Data Protection Safeguards',
+          text: 'When sharing data, we ensure:',
+          bullets: [
+            'Data processing agreements are in place',
+            'Recipients maintain appropriate security measures',
+            'Processing is limited to specified purposes',
+            'Compliance with privacy laws and regulations',
+            'International data transfer protections'
           ]
         }
       ]
@@ -167,18 +186,16 @@ const PrivacyPolicy = () => {
           subtitle: 'Technical Safeguards',
           text: 'We protect your data using:',
           bullets: [
-            'End-to-end encryption for sensitive data',
-            'Multi-factor authentication',
+            'Enterprise-grade encryption in transit and at rest',
             'Regular security audits and testing',
             'Intrusion detection systems',
-            'Automated backup systems'
+            'Continuous security monitoring and logging',
           ]
         },
         {
           subtitle: 'Data Breach Procedures',
           text: 'In case of a data breach, we will:',
           bullets: [
-            'Notify affected users within 72 hours',
             'Investigate and remediate the breach',
             'Inform relevant authorities',
             'Provide guidance on protecting your data',
@@ -280,7 +297,7 @@ const PrivacyPolicy = () => {
           {/* Header */}
           <div className="bg-indigo-600 px-6 py-8 text-white">
             <h1 className="text-3xl font-bold">Privacy Policy</h1>
-            <p className="mt-2 text-indigo-100">Last updated: December 28, 2024</p>
+            <p className="mt-2 text-indigo-100">Last updated: February 12, 2025</p>
             <p className="mt-4 text-indigo-200">
               This privacy notice explains how Notely AI collects and protects your information.
             </p>
@@ -369,7 +386,7 @@ const PrivacyPolicy = () => {
               <p>• Support: support@cstate.se</p>
             </div>
             <p className="mt-4 text-sm text-gray-500">
-              2024 © State Creative
+              {new Date().getFullYear()} © Notely AI
             </p>
           </div>
         </div>
