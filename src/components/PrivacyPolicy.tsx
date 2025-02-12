@@ -382,8 +382,8 @@ const PrivacyPolicy = () => {
             </h2>
             <div className="space-y-2 text-gray-600">
               <p>If you have any questions about this Privacy Policy, please contact us:</p>
-              <p>• Email: privacy@cstate.se</p>
-              <p>• Support: support@cstate.se</p>
+              <p>• Email: privacy@notely.se</p>
+              <p>• Support: support@notely.se</p>
             </div>
             <p className="mt-4 text-sm text-gray-500">
               {new Date().getFullYear()} © Notely AI

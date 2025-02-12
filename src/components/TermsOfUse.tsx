@@ -181,7 +181,7 @@ const TermsOfUse = () => {
       content: [
         {
           subtitle: '9.1 GDPR Compliance',
-          text: 'For EU users, we comply with GDPR requirements. You have rights to: access your data, request deletion, data portability, and restrict processing. Contact privacy@cstate.se for such requests.'
+          text: 'For EU users, we comply with GDPR requirements. You have rights to: access your data, request deletion, data portability, and restrict processing. Contact privacy@notely.se for such requests.'
         },
         {
           subtitle: '9.2 Data Collection',
@@ -358,9 +358,9 @@ const TermsOfUse = () => {
               </h2>
               <div className="space-y-2 text-gray-600">
                 <p>For any inquiries, please reach out to us:</p>
-                <p>• General Questions & Support: support@cstate.se</p>
-                <p>• Technical Support: tech@cstate.se</p>
-                <p>• Privacy Concerns: privacy@cstate.se</p>
+                <p>• General Questions & Support: support@notely.se</p>
+                <p>• Technical Support: tech@notely.se</p>
+                <p>• Privacy Concerns: privacy@notely.se</p>
               </div>
               <p className="mt-4 text-sm text-gray-500">
                 2024 © State Creative
