@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import Alert, { AlertDescription } from '../components/ui/alert';
 import { RefreshCw, AlertCircle } from 'lucide-react';
+import ExpandableCell from './ExpandableCell';
 
 interface LogEntry {
     id: number;
@@ -237,8 +238,12 @@ const ProcessLogs = () => {
           <tr key={log.id} className="hover:bg-gray-700">
             <td className="p-4">{new Date(log.created_at).toLocaleString()}</td>
             <td className="p-4">{log.request_id}</td>
-            <td className="p-4 max-w-xs truncate">{log.text}</td>
-            <td className="p-4 max-w-xs truncate">{log.output_text}</td>
+            <td className="p-4">
+              <ExpandableCell content={log.text} />
+            </td>
+            <td className="p-4">
+              <ExpandableCell content={log.output_text} />
+            </td>
             <td className="p-4">{metadata?.headers?.source || 'N/A'}</td>
             <td className="p-4">
               {[
