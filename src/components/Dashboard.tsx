@@ -12,6 +12,12 @@ interface MetricsData {
   lastMonthRequests: Array<{ total: number }>;
   costByDay: Array<{ date: string; total_cost: number }>;
   requestsByIp: Array<{ ip_address: string; count: number }>;
+  requestsByCountry: Array<{
+    country: string;
+    count: number;
+    total_cost: string;
+    avg_processing_time: string;
+  }>;
   requestsByEndpoint: Array<{ endpoint: string; count: number }>;
   avgProcessingTime: Array<{ endpoint: string; avg_time: number }>;
   hourlyStats: Array<{
@@ -42,7 +48,7 @@ const Dashboard = () => {
       const mobile = window.innerWidth < 1024;
       setIsMobile(mobile);
       // Keep all cards expanded by default
-      setExpandedCards(new Set(['costs', 'hourly', 'ips', 'endpoints', 'processing']));
+      setExpandedCards(new Set(['costs', 'hourly', 'ips', 'endpoints', 'processing', 'countries']));
     };
     
     checkMobile();
@@ -200,6 +206,31 @@ const Dashboard = () => {
           </div>
         </ChartCard>
 
+      {/* New Chart Card for Country Data */}
+      <ChartCard title="Requests by Country" id="countries" className="lg:col-span-3">
+          <div className="h-72">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={metrics.requestsByCountry}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                <XAxis 
+                  dataKey="country" 
+                  stroke="#9CA3AF"
+                  interval={0}
+                  tick={{ fontSize: 12 }}
+                />
+                <YAxis yAxisId="left" stroke="#9CA3AF" />
+                <YAxis yAxisId="right" orientation="right" stroke="#9CA3AF" />
+                <Tooltip 
+                  contentStyle={{ backgroundColor: '#1F2937', border: 'none' }}
+                  wrapperStyle={{ zIndex: 1000 }}
+                />
+                <Legend />
+                <Bar yAxisId="left" dataKey="count" fill="#4ADE80" name="Requests" />
+                <Bar yAxisId="right" dataKey="avg_processing_time" fill="#F472B6" name="Avg Time (ms)" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </ChartCard>
         <ChartCard title="Hourly Statistics" id="hourly" className="lg:col-span-3">
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
