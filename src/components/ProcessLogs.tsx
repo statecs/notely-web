@@ -212,7 +212,7 @@ const ProcessLogs = () => {
         <th className="p-4">Time</th>
         <th className="p-4">Request ID</th>
         <th className="p-4">Text</th>
-        <th className="p-4">Instruction</th>
+        <th className="p-4">Output</th>
         <th className="p-4">Source</th>
         <th className="p-4">Location</th>
         <th className="p-4">User Info</th>
@@ -292,25 +292,25 @@ const ProcessLogs = () => {
             </div>
             
             <div>
-              <span className="text-gray-400">Instruction:</span>
+              <span className="text-gray-400">Output:</span>
               <div className="text-white text-sm">{log.output_text}</div>
             </div>
 
             <div className="grid grid-cols-2 gap-2 text-sm">
               <div>
                 <span className="text-gray-400">Source:</span>
-                <div>{metadata?.headers?.source || 'N/A'}</div>
+                <div className="text-gray-400">{metadata?.headers?.source || 'N/A'}</div>
               </div>
               
               <div>
                 <span className="text-gray-400">Paid User:</span>
-                <div>{metadata?.headers?.paidUser === 'true' ? 'Yes' : 'No'}</div>
+                <div className="text-gray-400">{metadata?.headers?.paidUser === 'true' ? 'Yes' : 'No'}</div>
               </div>
             </div>
 
             <div>
               <span className="text-gray-400">Location:</span>
-              <div className="text-sm">
+              <div className="text-sm text-gray-400">
                 {[
                   metadata?.headers?.country,
                   metadata?.headers?.city,
