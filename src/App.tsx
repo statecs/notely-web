@@ -8,6 +8,7 @@ import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
 import TermsOfUse from './components/TermsOfUse';
 import PrivacyPolicy from './components/PrivacyPolicy';
+import Dashboard from './components/Dashboard';
 import PricingPage from './components/Pricing';
 import FeaturesPage from './components/Features';
 import ContactPage from './components/Contact';
@@ -123,6 +124,7 @@ const App = () => {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/dashboard-metrics" element={<Dashboard />} />
         </Routes>
       </div>
     </BrowserRouter>
