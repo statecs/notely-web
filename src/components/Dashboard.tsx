@@ -10,6 +10,12 @@ interface MetricsData {
   requestsByIp: Array<{ ip_address: string; count: number }>;
   requestsByEndpoint: Array<{ endpoint: string; count: number }>;
   avgProcessingTime: Array<{ endpoint: string; avg_time: number }>;
+  hourlyStats: Array<{
+    hour: number;
+    request_count: number;
+    total_cost: string;
+    avg_processing_time: number;
+  }>;
 }
 
 interface ChartCardProps {
@@ -155,6 +161,30 @@ const Dashboard = () => {
           </div>
         </ChartCard>
 
+        <ChartCard title="Hourly Statistics" id="hourly" className="lg:col-span-3">
+          <div className="h-72">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={metrics.hourlyStats}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                <XAxis 
+                  dataKey="hour" 
+                  stroke="#9CA3AF"
+                  tick={{ fontSize: 12 }}
+                />
+                <YAxis yAxisId="left" stroke="#9CA3AF" />
+                <YAxis yAxisId="right" orientation="right" stroke="#9CA3AF" />
+                <Tooltip 
+                  contentStyle={{ backgroundColor: '#1F2937', border: 'none' }}
+                  wrapperStyle={{ zIndex: 1000 }}
+                />
+                <Legend />
+                <Bar yAxisId="left" dataKey="request_count" fill="#60A5FA" name="Requests" />
+                <Bar yAxisId="right" dataKey="avg_processing_time" fill="#FBBF24" name="Avg Time (ms)" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </ChartCard>
+
         <ChartCard title="Top IP Addresses" id="ips" className="lg:col-span-1">
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
@@ -208,7 +238,7 @@ const Dashboard = () => {
         <ChartCard title="Avg Processing Time" id="processing" className="lg:col-span-1">
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={metrics.avgProcessingTime}>
+              <BarChart data={metrics.requestsByEndpoint}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                 <XAxis 
                   dataKey="endpoint" 
