@@ -20,6 +20,9 @@ interface LogEntry {
       source?: string;
       paidUser?: string;
       userAgent?: string;
+      country?: string;
+      timezone?: string;
+      city?: string;
     };
     cf?: {
       country?: string | null;
@@ -202,40 +205,130 @@ const ProcessLogs = () => {
 
           {/* Table */}
           <div className="overflow-x-auto">
-          <table className="w-full text-left text-gray-300">
-            <thead className="bg-gray-700 text-gray-200">
-            <tr>
-                <th className="p-4">Time</th>
-                <th className="p-4">Request ID</th>
-                <th className="p-4">Text</th>
-                <th className="p-4">Source</th>
-                <th className="p-4">Paid User</th>
-            </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-700">
-            {logs.map((log) => {
-                let metadata: MetadataType = { headers: {} };
-                try {
-                    if (log.metadata) {
-                    metadata = JSON.parse(log.metadata);
-                    }
-                } catch (e) {
-                    console.error('Failed to parse metadata:', e);
-                }
+  {/* Desktop View */}
+  <table className="hidden md:table w-full text-left text-gray-300">
+    <thead className="bg-gray-700 text-gray-200">
+      <tr>
+        <th className="p-4">Time</th>
+        <th className="p-4">Request ID</th>
+        <th className="p-4">Text</th>
+        <th className="p-4">Instruction</th>
+        <th className="p-4">Source</th>
+        <th className="p-4">Location</th>
+        <th className="p-4">User Info</th>
+      </tr>
+    </thead>
+    <tbody className="divide-y divide-gray-700">
+      {logs.map((log) => {
+        let metadata: MetadataType = { headers: {}, cf: {} };
+        let requestBody = {};
+        try {
+          if (log.metadata) {
+            metadata = JSON.parse(log.metadata);
+          }
+          if (log.request_body) {
+            requestBody = JSON.parse(log.request_body);
+          }
+        } catch (e) {
+          console.error('Failed to parse data:', e);
+        }
 
-                return (
-                    <tr key={log.id} className="hover:bg-gray-700">
-                    <td className="p-4">{new Date(log.created_at).toLocaleString()}</td>
-                    <td className="p-4">{log.request_id}</td>
-                    <td className="p-4">{log.text}</td>
-                    <td className="p-4">{metadata?.headers?.source || 'N/A'}</td>
-                    <td className="p-4">{metadata?.headers?.paidUser === 'true' ? 'Yes' : 'No'}</td>
-                    </tr>
-                );
-                })}
-            </tbody>
-        </table>
+        return (
+          <tr key={log.id} className="hover:bg-gray-700">
+            <td className="p-4">{new Date(log.created_at).toLocaleString()}</td>
+            <td className="p-4">{log.request_id}</td>
+            <td className="p-4 max-w-xs truncate">{log.text}</td>
+            <td className="p-4 max-w-xs truncate">{log.instruction_text}</td>
+            <td className="p-4">{metadata?.headers?.source || 'N/A'}</td>
+            <td className="p-4">
+              {[
+                metadata?.headers?.country,
+                metadata?.headers?.city,
+                metadata?.headers?.timezone
+              ].filter(Boolean).join(', ') || 'N/A'}
+            </td>
+            <td className="p-4">
+              <div>Paid: {metadata?.headers?.paidUser === 'true' ? 'Yes' : 'No'}</div>
+              <div className="text-xs text-gray-400">IP: {metadata?.headers?.realIp}</div>
+              <div className="text-xs text-gray-400">Agent: {metadata?.headers?.userAgent}</div>
+            </td>
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+
+  {/* Mobile View */}
+  <div className="md:hidden space-y-4">
+    {logs.map((log) => {
+      let metadata: MetadataType = { headers: {}, cf: {} };
+      let requestBody = {};
+      try {
+        if (log.metadata) {
+          metadata = JSON.parse(log.metadata);
+        }
+        if (log.request_body) {
+          requestBody = JSON.parse(log.request_body);
+        }
+      } catch (e) {
+        console.error('Failed to parse data:', e);
+      }
+
+      return (
+        <div key={log.id} className="bg-gray-700 p-4 rounded-lg space-y-2">
+          <div className="flex justify-between items-start">
+            <div className="text-sm text-gray-400">
+              {new Date(log.created_at).toLocaleString()}
+            </div>
+            <div className="text-sm bg-blue-600 px-2 py-1 rounded">
+              ID: {log.request_id}
+            </div>
           </div>
+          
+          <div className="space-y-1">
+            <div>
+              <span className="text-gray-400">Text:</span>
+              <div className="text-white">{log.text}</div>
+            </div>
+            
+            <div>
+              <span className="text-gray-400">Instruction:</span>
+              <div className="text-white text-sm">{log.instruction_text}</div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2 text-sm">
+              <div>
+                <span className="text-gray-400">Source:</span>
+                <div>{metadata?.headers?.source || 'N/A'}</div>
+              </div>
+              
+              <div>
+                <span className="text-gray-400">Paid User:</span>
+                <div>{metadata?.headers?.paidUser === 'true' ? 'Yes' : 'No'}</div>
+              </div>
+            </div>
+
+            <div>
+              <span className="text-gray-400">Location:</span>
+              <div className="text-sm">
+                {[
+                  metadata?.headers?.country,
+                  metadata?.headers?.city,
+                  metadata?.headers?.timezone
+                ].filter(Boolean).join(', ') || 'N/A'}
+              </div>
+            </div>
+
+            <div className="text-xs text-gray-400">
+              <div>IP: {metadata?.headers?.realIp}</div>
+              <div>Agent: {metadata?.headers?.userAgent}</div>
+            </div>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</div>
 
           {/* Pagination */}
           <div className="flex justify-between items-center mt-4">
