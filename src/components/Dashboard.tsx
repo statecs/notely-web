@@ -118,8 +118,16 @@ const Dashboard = () => {
 
   return (
     <div className="p-4 lg:p-8 bg-gray-900 min-h-screen">
-      <div className="flex flex-col lg:flex-row lg:justify-between mb-6">
-        <h1 className="text-2xl lg:text-3xl font-bold text-white">Analytics Dashboard</h1>
+       <div className="flex flex-col lg:flex-row lg:justify-between mb-6">
+        <div className="flex items-center gap-4">
+          <h1 className="text-2xl lg:text-3xl font-bold text-white">Analytics Dashboard</h1>
+          <a 
+            href="/dashboard-process-logs" 
+            className="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors"
+          >
+            View Process Logs
+          </a>
+        </div>
         <div className="text-sm text-gray-400">
           Last updated: {lastUpdated.toLocaleTimeString()}
         </div>

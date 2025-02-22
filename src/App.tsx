@@ -14,6 +14,7 @@ import FeaturesPage from './components/Features';
 import ContactPage from './components/Contact';
 import Navigation from './components/Navigation';
 import placeholder from './images/placeholder.png';
+import ProcessLogs from './components/ProcessLogs';
 
 
 
@@ -125,6 +126,7 @@ const App = () => {
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/dashboard-metrics" element={<Dashboard />} />
+          <Route path="/dashboard-process-logs" element={<ProcessLogs />} />
         </Routes>
       </div>
     </BrowserRouter>
