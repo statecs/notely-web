@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import Alert, { AlertDescription } from '../components/ui/alert';
-import { RefreshCw, AlertCircle, ChevronDown } from 'lucide-react';
+import { RefreshCw, AlertCircle, ChevronDown, Clock } from 'lucide-react';
 
 interface MetricsData {
   totalRequests: Array<{ total: number }>;
+  lastHourRequests: Array<{ total: number }>;
+  lastDayRequests: Array<{ total: number }>;
+  lastWeekRequests: Array<{ total: number }>;
+  lastMonthRequests: Array<{ total: number }>;
   costByDay: Array<{ date: string; total_cost: number }>;
   requestsByIp: Array<{ ip_address: string; count: number }>;
   requestsByEndpoint: Array<{ endpoint: string; count: number }>;
@@ -127,6 +131,13 @@ const Dashboard = () => {
 
   if (!metrics) return null;
 
+  const timeframeMetrics = [
+    { label: 'Last Hour', value: metrics.lastHourRequests[0].total, icon: Clock },
+    { label: 'Last Day', value: metrics.lastDayRequests[0].total, icon: Clock },
+    { label: 'Last Week', value: metrics.lastWeekRequests[0].total, icon: Clock },
+    { label: 'Last Month', value: metrics.lastMonthRequests[0].total, icon: Clock }
+  ];
+
   return (
     <div className="p-4 lg:p-8 bg-gray-900 min-h-screen">
       <div className="flex flex-col lg:flex-row lg:justify-between mb-6">
@@ -143,16 +154,25 @@ const Dashboard = () => {
           Last updated: {lastUpdated.toLocaleTimeString()}
         </div>
       </div>
-      
+
+      <div className="grid grid-cols-2 gap-2 lg:gap-4 mb-4 lg:mb-6">
+        {timeframeMetrics.map((metric) => (
+          <Card key={metric.label} className="bg-gray-800 text-white">
+            <CardContent className="p-2 lg:pt-6 lg:p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-xs lg:text-sm text-gray-400">{metric.label}</p>
+                  <p className="text-lg lg:text-2xl font-bold text-blue-400">{metric.value.toLocaleString()}</p>
+                </div>
+                <metric.icon className="w-6 h-6 lg:w-8 lg:h-8 text-gray-500" />
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+
+      </div>
+
       <div className="flex flex-col space-y-4 lg:grid lg:grid-cols-3 lg:gap-6 lg:space-y-0">
-        <Card className="bg-gray-800 text-white lg:col-span-3">
-          <CardContent className="pt-6">
-            <div className="text-3xl font-bold text-blue-400 text-center">
-              {metrics.totalRequests[0].total.toLocaleString()}
-            </div>
-            <div className="text-center mt-2">Total Requests</div>
-          </CardContent>
-        </Card>
 
         <ChartCard title="Daily Costs" id="costs" className="lg:col-span-3">
           <div className="h-72">
@@ -279,7 +299,7 @@ const Dashboard = () => {
           </div>
         </ChartCard>
       </div>
-    </div>
+      </div>
   );
 };
 
