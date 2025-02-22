@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import Alert, { AlertDescription } from '../components/ui/alert';
 import { RefreshCw, AlertCircle } from 'lucide-react';
 import ExpandableCell from './ExpandableCell';
+import { ArrowLeft } from 'lucide-react';
 
 interface LogEntry {
     id: number;
@@ -111,6 +112,14 @@ const ProcessLogs = () => {
 
   return (
     <div className="p-4 space-y-4">
+       {/* Add this button before the Card component */}
+        <a 
+        href="/dashboard-metrics" 
+        className="inline-flex items-center gap-2 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors"
+      >
+        <ArrowLeft className="w-5 h-5" />
+        <span>Back to Dashboard</span>
+      </a>
       <Card className="bg-gray-800">
         <CardHeader>
           <CardTitle className="text-white">Process Logs</CardTitle>

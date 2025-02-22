@@ -30,12 +30,15 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState(new Date());
-  const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set(['costs', 'hourly', 'ips', 'endpoints', 'processing']));
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
+      const mobile = window.innerWidth < 1024;
+      setIsMobile(mobile);
+      // Keep all cards expanded by default
+      setExpandedCards(new Set(['costs', 'hourly', 'ips', 'endpoints', 'processing']));
     };
     
     checkMobile();
@@ -65,30 +68,42 @@ const Dashboard = () => {
   }, []);
 
   const ChartCard = ({ title, id, children, className = '' }: ChartCardProps) => {
+    const isExpanded = expandedCards.has(id);
+
+    const toggleCard = () => {
+      if (!isMobile) return;
+      
+      const newExpandedCards = new Set(expandedCards);
+      if (isExpanded) {
+        newExpandedCards.delete(id);
+      } else {
+        newExpandedCards.add(id);
+      }
+      setExpandedCards(newExpandedCards);
+    };
+
     return (
-      <Card className={`bg-gray-800 text-white overflow-hidden ${className}`}>
+      <Card className={`bg-gray-800 text-white ${className}`}>
         <CardHeader 
-          className={isMobile ? "cursor-pointer" : ""}
-          onClick={() => isMobile && setExpandedCard(expandedCard === id ? null : id)}
+          className={`${isMobile ? 'cursor-pointer' : ''} p-6`}
+          onClick={toggleCard}
         >
           <div className="flex justify-between items-center">
             <CardTitle className="text-lg">{title}</CardTitle>
             {isMobile && (
               <ChevronDown 
                 className={`w-5 h-5 transition-transform ${
-                  expandedCard === id ? 'transform rotate-180' : ''
+                  isExpanded ? 'rotate-180' : ''
                 }`}
               />
             )}
           </div>
         </CardHeader>
-        <CardContent 
-          className={`transition-all duration-300 ${
-            isMobile ? (expandedCard === id ? 'max-h-96' : 'max-h-0 overflow-hidden p-0') : ''
-          }`}
-        >
-          {children}
-        </CardContent>
+        {(!isMobile || isExpanded) && (
+          <CardContent className="p-6">
+            {children}
+          </CardContent>
+        )}
       </Card>
     );
   };
@@ -103,12 +118,8 @@ const Dashboard = () => {
 
   if (error) {
     return (
-      <Alert 
-        variant="destructive" 
-        className="m-4"
-        icon={<AlertCircle className="h-5 w-5" />}
-        onClose={() => setError(null)}
-      >
+      <Alert variant="destructive" className="m-4">
+        <AlertCircle className="h-5 w-5" />
         <AlertDescription>Error: {error}</AlertDescription>
       </Alert>
     );
@@ -118,7 +129,7 @@ const Dashboard = () => {
 
   return (
     <div className="p-4 lg:p-8 bg-gray-900 min-h-screen">
-       <div className="flex flex-col lg:flex-row lg:justify-between mb-6">
+      <div className="flex flex-col lg:flex-row lg:justify-between mb-6">
         <div className="flex items-center gap-4">
           <h1 className="text-2xl lg:text-3xl font-bold text-white">Analytics Dashboard</h1>
           <a 
