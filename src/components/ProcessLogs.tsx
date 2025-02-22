@@ -8,7 +8,7 @@ interface LogEntry {
     request_id: number;
     request_body: string;
     text: string;
-    instruction_text: string;
+    output_text: string;
     chat_history: string | null;
     created_at: string;
     metadata: string;
@@ -238,7 +238,7 @@ const ProcessLogs = () => {
             <td className="p-4">{new Date(log.created_at).toLocaleString()}</td>
             <td className="p-4">{log.request_id}</td>
             <td className="p-4 max-w-xs truncate">{log.text}</td>
-            <td className="p-4 max-w-xs truncate">{log.instruction_text}</td>
+            <td className="p-4 max-w-xs truncate">{log.output_text}</td>
             <td className="p-4">{metadata?.headers?.source || 'N/A'}</td>
             <td className="p-4">
               {[
@@ -293,7 +293,7 @@ const ProcessLogs = () => {
             
             <div>
               <span className="text-gray-400">Instruction:</span>
-              <div className="text-white text-sm">{log.instruction_text}</div>
+              <div className="text-white text-sm">{log.output_text}</div>
             </div>
 
             <div className="grid grid-cols-2 gap-2 text-sm">
